@@ -4,7 +4,7 @@ import testdata from '../models/testdata';
 export default ({ config, db, error_handlers}) => resource({
 
 	/** Property name to store preloaded entity on `request`. */
-	id : 'testdata',
+	id : 'statistics',
 
 	/** For requests with an `id`, you can auto-load the entity.
 	 *  Errors terminate the request, success sets `req[id] = data`.
@@ -20,16 +20,13 @@ export default ({ config, db, error_handlers}) => resource({
 		var e = false;
 		if (e) {
 			var err = {};
-			err.mesage = "index error";
+			err.mesage = "statistics index error";
 			error_handlers(err, req, res);
 		}
 		
 		var data = {};
-		data.query = req.query;
-		data.list = testdata;
-		if (Math.random() > 0.5) {
-			data.list = testdata.slice(1, 4);
-		}
+		data.test_count = 265;
+		data.company_count = 13;
 		res.json(data);
 	},
 
